@@ -1,0 +1,72 @@
+.about-section {
+    padding: 50px;
+    background-color: #242424; /* Color de fondo */
+    color: #ffffff;
+    margin-bottom: 4rem;
+  }
+  
+  .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+  }
+  
+  .about-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .about-text {
+    max-width: 600px;
+  }
+  
+  .about-text ul {
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+  
+  .about-content {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se acomoden en varias líneas */
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Espaciado entre elementos */
+  }
+  
+  .about-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .about-image img {
+    max-width: 100%;
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  /* Ajustes para pantallas más pequeñas */
+  @media screen and (max-width: 768px) {
+    .about-content {
+      flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+      text-align: center;
+    }
+  
+    .about-image img {
+      max-width: 80%; /* Reducimos el tamaño de la imagen */
+    }
+  }
+  .skills-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Espacio entre los íconos */
+    margin-top: 10px; /* Espacio superior */
+  }
+  
+  .skills-icons .fa-icon {
+    color: #61dafb; /* Cambia el color según tu diseño */
+  }
+  
