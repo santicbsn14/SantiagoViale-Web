@@ -4,6 +4,7 @@ import kinefit from '../Imagenes/Kinefit-Project.jpg'
 import ClubBelgrano from '../Imagenes/ClubBelgrano-Project.png'
 import Catalogo from '../Imagenes/Catalogo-Project.jpg'
 import NicolasSanetti from '../Imagenes/NicolasSanetti-Project.jpg'
+import NewConcepts from '../Imagenes/NewConcept.png'
 const projects = [
   {
     title: 'Web Centro "Kinefit" y sistema gestor de turnos',
@@ -19,20 +20,22 @@ const projects = [
     liveLink: 'https://clubbelgrano.com.ar/',
     codeLink: 'https://github.com/santicbsn14/WebOficialClubBelgrano1'
   },
-  {
-    title:'Catalogo de productos para emprendimiento MyB ',
-    description:"Desarrollo de un catálogo digital para presentar la línea de productos de manera clara y organizada. La plataforma permite a los clientes armar sus pedidos de forma sencilla y, al finalizar, los redirige automáticamente al WhatsApp de la empresa con el pedido preconfigurado para su confirmación.",
-    image: Catalogo,
-    liveLink:'https://myb-distribuidora-catalogo.vercel.app/',
-    codeLink:'https://github.com/santicbsn14/Catalogo-Emprendimiento'
-  },
 {
   title: 'Sitio web "Nicolás Sanetti Coiffeur" con sistema integral de turnos',
   description: "Desarrollo de un sitio web completo para la peluquería Nicolás Sanetti Coiffeur, que combina una sección institucional —con páginas como inicio, servicios, historia y contacto— con un sistema de gestión de turnos totalmente funcional. La plataforma permite a los clientes solicitar turnos online y a los profesionales del equipo administrar sus agendas, crear y gestionar servicios, y visualizar los turnos asignados de manera eficiente.",
   image: NicolasSanetti,
   liveLink: 'http://nicolas-sanetti-front.vercel.app/', // actualizar si tenés el link real
   codeLink: 'https://github.com/santicbsn14/nicolasSanetti-Front' // actualizar si tenés repo real
+},
+{
+  title: 'Sitio web "New Concepts Agency" – Agencia de DJs de música electrónica',
+  description:
+    "Diseño y desarrollo de un sitio web institucional para la agencia de representación de DJs 'New Concepts Agency'. El sitio incluye secciones como inicio, roster de artistas, fechas de eventos, galería de imágenes y contacto. Se destacan funcionalidades dinámicas como el filtrado por DJ en la sección de fechas, animaciones modernas y una estructura completamente responsiva. La información de artistas y fechas se administra desde un panel CMS creado con Sanity, permitiendo a los representantes de la agencia mantener la web actualizada sin conocimientos técnicos.",
+  image: NewConcepts, // reemplazalo por el import correspondiente
+  liveLink: 'https://newconcepts-agency.vercel.app/', // actualizá si tenés otro hosting
+  codeLink: 'https://github.com/santicbsn14/newconcepts-agency' // actualizá si es otro repo
 }
+
 
 ];
 
