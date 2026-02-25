@@ -2,7 +2,6 @@ import React from 'react';
 import './Projects.css'; // Asegúrate de tener un archivo CSS para estilos
 import kinefit from '../Imagenes/Kinefit-Project.jpg'
 import ClubBelgrano from '../Imagenes/ClubBelgrano-Project.png'
-import Catalogo from '../Imagenes/Catalogo-Project.jpg'
 import NicolasSanetti from '../Imagenes/NicolasSanetti-Project.jpg'
 import NewConcepts from '../Imagenes/NewConcept.png'
 const projects = [
