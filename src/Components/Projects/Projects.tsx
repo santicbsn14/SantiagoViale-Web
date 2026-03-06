@@ -31,7 +31,7 @@ const projects = [
   description:
     "Diseño y desarrollo de un sitio web institucional para la agencia de representación de DJs 'New Concepts Agency'. El sitio incluye secciones como inicio, roster de artistas, fechas de eventos, galería de imágenes y contacto. Se destacan funcionalidades dinámicas como el filtrado por DJ en la sección de fechas, animaciones modernas y una estructura completamente responsiva. La información de artistas y fechas se administra desde un panel CMS creado con Sanity, permitiendo a los representantes de la agencia mantener la web actualizada sin conocimientos técnicos.",
   image: NewConcepts, // reemplazalo por el import correspondiente
-  liveLink: 'https://newconcepts-agency.vercel.app/', // actualizá si tenés otro hosting
+  liveLink: 'https://newconcepts-agency.com.ar/', // actualizá si tenés otro hosting
   codeLink: 'https://github.com/santicbsn14/newconcepts-agency' // actualizá si es otro repo
 }
 
