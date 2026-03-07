@@ -6,7 +6,7 @@ import kinefit from '../Imagenes/Kinefit-Project.jpg'
 import clubBelgrano from '../Imagenes/ClubBelgrano-Project.png'
 import nicolasSanetti from '../Imagenes/NicolasSanetti-Project.jpg'
 import newConcepts from '../Imagenes/NewConcept.png'
-
+import laJuana from '../Imagenes/LaJuana.jpeg'
 type ProjectType = 'catalog' | 'system' | 'web';
 
 interface Project {
@@ -61,6 +61,16 @@ const projects: Project[] = [
     live: 'https://newconcepts-agency.com.ar/',
     code: 'https://github.com/santicbsn14/newconcepts-agency',
   },
+  {
+  title: 'Catálogo de Pedidos — Casa de Empanadas',
+  desc: 'Catálogo dinámico para que los clientes armen su pedido online. Los dueños habilitan o deshabilitan sabores según el stock. Al confirmar, el pedido se envía directo al WhatsApp del negocio con el detalle completo.',
+  type: 'catalog',
+  image:laJuana,
+  typeLabel: 'Catálogo + Pedidos',
+  emoji: '🫔',
+  live: 'https://catalogo-la-juana.vercel.app/',
+  code: 'https://github.com/santicbsn14/Catalogo-LaJuana',
+},
 ];
 
 const filters = [

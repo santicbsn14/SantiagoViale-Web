@@ -1,6 +1,6 @@
 import React from 'react';
 import './AboutMe.css';
-// import santiagoViale from '../Imagenes/Santiago-Viale.jpg'
+import santiagoViale from '../Imagenes/Santiago-Viale.jpg'
 
 const stack = ['TypeScript', 'React', 'Node.js', 'Express', 'MongoDB', 'Vite', 'Sanity CMS', 'Git'];
 
@@ -35,9 +35,8 @@ const AboutMe: React.FC = () => {
 
         <div className="about-visual">
           <div className="about-img-frame" />
-          {/* Cuando tengas la foto, reemplazá esto: */}
-          <div className="about-img-placeholder">👨‍💻</div>
-          {/* <img src={santiagoViale} alt="Santiago Viale" className="about-img" /> */}
+
+          <img src={santiagoViale} alt="Santiago Viale" className="about-img" />
         </div>
       </div>
     </section>
