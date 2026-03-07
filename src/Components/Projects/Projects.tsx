@@ -1,57 +1,120 @@
-import React from 'react';
-import './Projects.css'; // Asegúrate de tener un archivo CSS para estilos
+import React, { useState } from 'react';
+import './Projects.css';
+
+
 import kinefit from '../Imagenes/Kinefit-Project.jpg'
-import ClubBelgrano from '../Imagenes/ClubBelgrano-Project.png'
-import NicolasSanetti from '../Imagenes/NicolasSanetti-Project.jpg'
-import NewConcepts from '../Imagenes/NewConcept.png'
-const projects = [
-  {
-    title: 'Web Centro "Kinefit" y sistema gestor de turnos',
-    description: 'Web institucional para un centro de kinesiología, incluyendo información sobre servicios, contacto y ubicación. Además, el proyecto integra un sistema de gestión de turnos en línea que permite a los pacientes reservar, cancelar y gestionar sus citas',
-    image: kinefit,
-    liveLink: 'https://web-kinefit-front.vercel.app/',
-    codeLink: 'https://github.com/santicbsn14/web-kinefit-front'
-  },
-  {
-    title: 'Sitio Web Club Belgrano San Nicolas',
-    description: 'Desarrollo de la página web institucional para el Club Belgrano San Nicolás, diseñada para proporcionar información relevante sobre el club, sus actividades y novedades. La plataforma permite a los administradores del club subir noticias, eventos y anuncios importantes para mantener a los socios y la comunidad informados.',
-    image: ClubBelgrano,
-    liveLink: 'https://clubbelgrano.com.ar/',
-    codeLink: 'https://github.com/santicbsn14/WebOficialClubBelgrano1'
-  },
-{
-  title: 'Sitio web "Nicolás Sanetti Coiffeur" con sistema integral de turnos',
-  description: "Desarrollo de un sitio web completo para la peluquería Nicolás Sanetti Coiffeur, que combina una sección institucional —con páginas como inicio, servicios, historia y contacto— con un sistema de gestión de turnos totalmente funcional. La plataforma permite a los clientes solicitar turnos online y a los profesionales del equipo administrar sus agendas, crear y gestionar servicios, y visualizar los turnos asignados de manera eficiente.",
-  image: NicolasSanetti,
-  liveLink: 'http://nicolas-sanetti-front.vercel.app/', // actualizar si tenés el link real
-  codeLink: 'https://github.com/santicbsn14/nicolasSanetti-Front' // actualizar si tenés repo real
-},
-{
-  title: 'Sitio web "New Concepts Agency" – Agencia de DJs de música electrónica',
-  description:
-    "Diseño y desarrollo de un sitio web institucional para la agencia de representación de DJs 'New Concepts Agency'. El sitio incluye secciones como inicio, roster de artistas, fechas de eventos, galería de imágenes y contacto. Se destacan funcionalidades dinámicas como el filtrado por DJ en la sección de fechas, animaciones modernas y una estructura completamente responsiva. La información de artistas y fechas se administra desde un panel CMS creado con Sanity, permitiendo a los representantes de la agencia mantener la web actualizada sin conocimientos técnicos.",
-  image: NewConcepts, // reemplazalo por el import correspondiente
-  liveLink: 'https://newconcepts-agency.com.ar/', // actualizá si tenés otro hosting
-  codeLink: 'https://github.com/santicbsn14/newconcepts-agency' // actualizá si es otro repo
+import clubBelgrano from '../Imagenes/ClubBelgrano-Project.png'
+import nicolasSanetti from '../Imagenes/NicolasSanetti-Project.jpg'
+import newConcepts from '../Imagenes/NewConcept.png'
+
+type ProjectType = 'catalog' | 'system' | 'web';
+
+interface Project {
+  title: string;
+  desc: string;
+  type: ProjectType;
+  typeLabel: string;
+  emoji: string;
+  image: string;  // descomentar cuando uses imágenes reales
+  live: string;
+  code: string;
 }
 
+const projects: Project[] = [
+  {
+    title: 'Web + Sistema de Turnos — Kinefit',
+    desc: 'Web institucional para centro de kinesiología con sistema de reservas online. Pacientes pueden agendar, cancelar y gestionar turnos.',
+    type: 'system',
+    typeLabel: 'Sistema',
+    emoji: '🏥',
+    image: kinefit,
+    live: 'https://web-kinefit-front.vercel.app/',
+    code: 'https://github.com/santicbsn14/web-kinefit-front',
+  },
+  {
+    title: ' Web — Nicolás Sanetti Coiffeur',
+    desc: 'Sitio institucional + sistema de turnos para peluquería. Los profesionales administran su agenda; los clientes reservan online.',
+    type: 'catalog',
+    typeLabel: 'Catálogo + Turnos',
+    emoji: '✂️',
+    image: nicolasSanetti,
+    live: 'http://nicolas-sanetti-front.vercel.app/',
+    code: 'https://github.com/santicbsn14/nicolasSanetti-Front',
+  },
+  {
+    title: 'Web Institucional — Club Belgrano San Nicolás',
+    desc: 'Portal del club con panel de administración para publicar noticias, eventos y anuncios. Socios y comunidad siempre informados.',
+    type: 'web',
+    typeLabel: 'Web Institucional',
+    emoji: '⚽',
+    image: clubBelgrano,
+    live: 'https://clubbelgrano.com.ar/',
+    code: 'https://github.com/santicbsn14/WebOficialClubBelgrano1',
+  },
+  {
+    title: 'Web + CMS — New Concepts Agency',
+    desc: 'Sitio para agencia de DJs con roster, fechas de eventos, galería y CMS en Sanity. Los representantes actualizan sin tocar código.',
+    type: 'catalog',
+    typeLabel: 'Catálogo + CMS',
+    emoji: '🎧',
+    image: newConcepts,
+    live: 'https://newconcepts-agency.com.ar/',
+    code: 'https://github.com/santicbsn14/newconcepts-agency',
+  },
+];
 
+const filters = [
+  { key: 'todos', label: 'Todos' },
+  { key: 'catalog', label: 'Catálogos' },
+  { key: 'system', label: 'Sistemas' },
+  { key: 'web', label: 'Webs' },
 ];
 
 const Projects: React.FC = () => {
+  const [activeFilter, setActiveFilter] = useState<string>('todos');
+
+  const filtered = activeFilter === 'todos'
+    ? projects
+    : projects.filter((p) => p.type === activeFilter);
+
   return (
-    <section id="projects" className="projects-section">
-      <h2 className="section-title">Mis Proyectos</h2>
+    <section id="proyectos" className="section projects-section">
+      <div className="projects-header">
+        <div>
+          <div className="section-label">Trabajos reales</div>
+          <h2 className="section-title">Proyectos</h2>
+        </div>
+        <div className="filter-tabs">
+          {filters.map((f) => (
+            <button
+              key={f.key}
+              className={`filter-tab ${activeFilter === f.key ? 'active' : ''}`}
+              onClick={() => setActiveFilter(f.key)}
+            >
+              {f.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
       <div className="projects-grid">
-        {projects.map((project, index) => (
-          <div className="card" key={index}>
-            <img src={project.image} alt={`${project.title} screenshot`} className="card-image" />
-            <div className="card-content">
-              <h3 className="card-title">{project.title}</h3>
-              <p className="card-description">{project.description}</p>
-              <div className="card-links">
-                <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="btn-primary">Ver Proyecto</a>
-                <a href={project.codeLink} target="_blank" rel="noopener noreferrer" className="btn-secondary">Código</a>
+        {filtered.map((p, i) => (
+          <div key={i} className="project-card">
+            {/* Cuando tengas imágenes reales, reemplazá esto: */}
+            
+            <img src={p.image} alt={p.title} className="project-img" />
+
+            <div className="project-body">
+              <span className={`project-type type-${p.type}`}>{p.typeLabel}</span>
+              <h3 className="project-title">{p.title}</h3>
+              <p className="project-desc">{p.desc}</p>
+              <div className="project-links">
+                <a href={p.live} target="_blank" rel="noopener noreferrer" className="project-link link-live">
+                  Ver proyecto
+                </a>
+                <a href={p.code} target="_blank" rel="noopener noreferrer" className="project-link link-code">
+                  Código
+                </a>
               </div>
             </div>
           </div>
