@@ -1,7 +1,7 @@
 
 
 import React from 'react';
-import './Home.css';
+import './home.css';
 
 const Home: React.FC = () => {
   const scrollTo = (id: string) => {
