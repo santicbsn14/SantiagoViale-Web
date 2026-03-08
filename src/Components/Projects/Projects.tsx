@@ -63,7 +63,7 @@ const projects: Project[] = [
   },
   {
   title: 'Catálogo de Pedidos — Casa de Empanadas',
-  desc: 'Catálogo dinámico para que los clientes armen su pedido online. Los dueños habilitan o deshabilitan sabores según el stock. Al confirmar, el pedido se envía directo al WhatsApp del negocio con el detalle completo.',
+  desc: 'Catálogo dinámico para que los clientes armen su pedido online!. Los dueños habilitan o deshabilitan sabores según el stock. Al confirmar, el pedido se envía directo al WhatsApp del negocio con el detalle completo.',
   type: 'catalog',
   image:laJuana,
   typeLabel: 'Catálogo + Pedidos',
