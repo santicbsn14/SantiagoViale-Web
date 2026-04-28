@@ -7,6 +7,7 @@ import clubBelgrano from '../Imagenes/ClubBelgrano-Project.png'
 import nicolasSanetti from '../Imagenes/NicolasSanetti-Project.jpg'
 import newConcepts from '../Imagenes/NewConcept.png'
 import laJuana from '../Imagenes/LaJuana.jpeg'
+import pañaleranano from '../Imagenes/pañaleraNano.jpeg'
 type ProjectType = 'catalog' | 'system' | 'web';
 
 interface Project {
@@ -51,6 +52,16 @@ const projects: Project[] = [
     live: 'https://clubbelgrano.com.ar/',
     code: 'https://github.com/santicbsn14/WebOficialClubBelgrano1',
   },
+  {
+  title: 'Catálogo + Panel de Gestión — Pañalera Nano',
+  desc: 'Plataforma completa para distribuidora con envíos a todo el país. Los clientes arman su pedido online y se redirigen al WhatsApp del negocio. El admin gestiona productos, deshabilita stock y tiene un panel para ver y filtrar todos los pedidos por fecha, producto y más.',
+  type: 'catalog',
+  typeLabel: 'Catálogo + Gestión',
+  emoji: '🍼',
+  image: pañaleranano, // importá la imagen arriba: import paaleranano from '../Imagenes/PañaleraNano.jpg'
+  live: 'https://pa-alera-nano.vercel.app/',
+  code: 'https://github.com/santicbsn14/TU-REPO-ACÁ',
+},
   {
     title: 'Web + CMS — New Concepts Agency',
     desc: 'Sitio para agencia de DJs con roster, fechas de eventos, galería y CMS en Sanity. Los representantes actualizan sin tocar código.',

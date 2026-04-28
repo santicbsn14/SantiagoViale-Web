@@ -45,7 +45,7 @@
   background: var(--bg2);
   border: 1px solid var(--border);
   border-radius: 12px;
-  overflow: hidden;
+  overflow: visible;
   transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
 .project-card:hover {
@@ -59,6 +59,7 @@
   height: 200px;
   object-fit: cover;
   display: block;
+  border-radius: 12px 12px 0 0;  /* ← para mantener las esquinas redondeadas arriba */
 }
 
 .project-img-placeholder {
@@ -117,7 +118,14 @@
 .link-live:hover { background: #fff; }
 .link-code { border: 1px solid var(--border); color: var(--muted); }
 .link-code:hover { border-color: var(--accent); color: var(--accent); }
+.project-card {
+  touch-action: manipulation;
+}
 
+.project-link {
+  touch-action: manipulation;
+  cursor: pointer;
+}
 @media (max-width: 768px) {
   .projects-header { flex-direction: column; align-items: flex-start; }
 }
@@ -148,3 +156,16 @@
     color: #242424;
   }
    */
+   @media (max-width: 768px) {
+  .projects-header { flex-direction: column; align-items: flex-start; }
+  
+  .project-card {
+    transform: none !important;
+  }
+
+  .project-link {
+    pointer-events: auto;
+    position: relative;
+    z-index: 10;
+  }
+}
