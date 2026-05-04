@@ -59,8 +59,8 @@ const projects: Project[] = [
   typeLabel: 'Catálogo + Gestión',
   emoji: '🍼',
   image: pañaleranano, // importá la imagen arriba: import paaleranano from '../Imagenes/PañaleraNano.jpg'
-  live: 'https://pa-alera-nano.vercel.app/',
-  code: 'https://github.com/santicbsn14/TU-REPO-ACÁ',
+  live: 'https://panaleranano.com/',
+  code: 'https://github.com/santicbsn14/Pa-alera-Nano',
 },
   {
     title: 'Web + CMS — New Concepts Agency',
