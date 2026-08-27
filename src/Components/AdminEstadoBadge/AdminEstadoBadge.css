@@ -1,0 +1,30 @@
+.admin-badge {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  border-radius: 100px;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.admin-badge--activo {
+  background: rgba(97, 218, 251, 0.1);
+  color: var(--accent);
+  border-color: rgba(97, 218, 251, 0.25);
+}
+
+.admin-badge--pausado {
+  background: rgba(247, 201, 72, 0.12);
+  color: var(--accent2);
+  border-color: rgba(247, 201, 72, 0.25);
+}
+
+.admin-badge--terminado {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--muted);
+  border-color: var(--border);
+}

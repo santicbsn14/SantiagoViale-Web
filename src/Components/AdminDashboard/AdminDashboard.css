@@ -1,0 +1,38 @@
+.admin-dashboard {
+  min-height: 100vh;
+  padding: 3rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.admin-dashboard__totales {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin: 2rem 0 3rem;
+}
+
+.admin-dashboard__lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.admin-dashboard__loading,
+.admin-dashboard__empty,
+.admin-dashboard__error {
+  font-family: var(--font-body);
+  color: var(--muted);
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.admin-dashboard__error {
+  color: var(--accent2);
+}
+
+@media (max-width: 768px) {
+  .admin-dashboard {
+    padding: 2rem 1.25rem;
+  }
+}

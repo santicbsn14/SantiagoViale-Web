@@ -1,24 +1,14 @@
 
-import './index.css';
-import Navbar from './Components/Navbar/Navbar';
-import Home from './Components/Home/Home';
-import Services from './Components/Services/Services';
-import Projects from './Components/Projects/Projects';
-import AboutMe from './Components/About-Me/About-me';
-import Contact from './Components/Contact/Contact';
-import Footer from './Components/Footer/Footer';
+import { Routes, Route } from 'react-router-dom';
+import PortfolioPage from './Pages/PortfolioPage';
+import AdminPage from './Pages/AdminPage';
 
 function App() {
   return (
-    <>
-      <Navbar />
-      <Home />
-      <Services />
-      <Projects />
-      <AboutMe />
-      <Contact />
-      <Footer />
-    </>
+    <Routes>
+      <Route path="/" element={<PortfolioPage />} />
+      <Route path="/admin/*" element={<AdminPage />} />
+    </Routes>
   );
 }
 

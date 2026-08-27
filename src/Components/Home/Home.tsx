@@ -29,7 +29,7 @@ const Home: React.FC = () => {
         </div>
         <div className="hero-stats">
           <div>
-            <div className="stat-num">4+</div>
+            <div className="stat-num">7+</div>
             <div className="stat-label">Proyectos entregados</div>
           </div>
           <div>

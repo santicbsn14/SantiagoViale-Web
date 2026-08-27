@@ -1,0 +1,162 @@
+.admin-detalle {
+  min-height: 100vh;
+  padding: 3rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.admin-detalle__volver {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-decoration: none;
+  margin-bottom: 2rem;
+  transition: color 0.2s;
+}
+.admin-detalle__volver:hover {
+  color: var(--accent);
+}
+
+.admin-detalle__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.admin-detalle__header-aside {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.admin-detalle__ampliacion {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-top: 0.5rem;
+}
+
+.admin-detalle__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.5rem;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.75rem;
+  margin-bottom: 3rem;
+}
+
+.admin-detalle__campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.admin-detalle__label {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.admin-detalle__valor {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.admin-detalle__valor--acento {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.admin-detalle__pagos-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+}
+
+.admin-detalle__pagos-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.admin-detalle__pago {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  flex-wrap: wrap;
+}
+
+.admin-detalle__pago-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.admin-detalle__pago-principal {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.admin-detalle__pago-monto {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.admin-detalle__pago-fecha {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.admin-detalle__pago-secundario {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.admin-detalle__pago-metodo {
+  text-transform: capitalize;
+  color: var(--accent);
+}
+
+.admin-detalle__loading,
+.admin-detalle__empty,
+.admin-detalle__error {
+  font-family: var(--font-body);
+  color: var(--muted);
+  padding: 2rem 0;
+}
+
+.admin-detalle__error {
+  color: var(--accent2);
+}
+
+@media (max-width: 768px) {
+  .admin-detalle {
+    padding: 2rem 1.25rem;
+  }
+}
