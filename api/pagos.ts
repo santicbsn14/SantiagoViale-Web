@@ -4,9 +4,9 @@
 // locally, run `vercel dev` from this directory instead (needs the Vercel CLI
 // and a `.env` file with SANITY_READ_TOKEN set — see .env.example).
 
-import type { ServerlessRequest, ServerlessResponse } from './_http';
-import { getSanityClient } from './_sanityClient';
-import { isSessionValid } from './_session';
+import type { ServerlessRequest, ServerlessResponse } from './_http.js';
+import { getSanityClient } from './_sanityClient.js';
+import { isSessionValid } from './_session.js';
 
 interface PagoDoc {
   _id: string;

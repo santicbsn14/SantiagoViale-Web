@@ -8,7 +8,7 @@
 // expiration. Uses node:crypto only — no new dependencies.
 
 import { createHmac, timingSafeEqual } from 'node:crypto';
-import type { ServerlessRequest } from './_http';
+import type { ServerlessRequest } from './_http.js';
 
 const SESSION_COOKIE_NAME = 'admin_session';
 const SESSION_MAX_AGE_SECONDS = 7 * 24 * 60 * 60; // 7 días

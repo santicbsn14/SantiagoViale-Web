@@ -5,8 +5,8 @@
 // locally, run `vercel dev` from this directory instead (needs the Vercel CLI
 // and a `.env` file with ADMIN_PASSWORD set — see .env.example).
 
-import type { ServerlessRequest, ServerlessResponse } from './_http';
-import { buildSessionCookieHeader, createSessionCookieValue } from './_session';
+import type { ServerlessRequest, ServerlessResponse } from './_http.js';
+import { buildSessionCookieHeader, createSessionCookieValue } from './_session.js';
 
 interface LoginRequestBody {
   password?: unknown;
