@@ -2,7 +2,7 @@ import React from 'react';
 import './AboutMe.css';
 import santiagoViale from '../Imagenes/Santiago-Viale.jpg'
 
-const stack = ['TypeScript', 'React', 'Node.js', 'Express', 'MongoDB', 'Vite', 'Sanity CMS', 'Git'];
+const stack = ['TypeScript', 'React', 'Node.js', 'Express', 'MongoDB', 'Vite', 'Sanity CMS', 'Git', 'Vercel', 'Twilio'];
 
 const AboutMe: React.FC = () => {
   return (

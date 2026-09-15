@@ -8,6 +8,8 @@ import nicolasSanetti from '../Imagenes/NicolasSanetti-Project.jpg'
 import newConcepts from '../Imagenes/NewConcept.png'
 import laJuana from '../Imagenes/LaJuana.jpeg'
 import pañaleranano from '../Imagenes/pañaleraNano.jpeg'
+import brioLogo from '../Imagenes/brio-logo.png'
+import camiLogo from '../Imagenes/cami-logo.png'
 type ProjectType = 'catalog' | 'system' | 'web';
 
 interface Project {
@@ -17,11 +19,30 @@ interface Project {
   typeLabel: string;
   emoji: string;
   image: string;  // descomentar cuando uses imágenes reales
-  live: string;
-  code: string;
+  live?: string;
+  code?: string;
+  enDesarrollo?: boolean;
 }
 
 const projects: Project[] = [
+  {
+    title: 'Brío Valores — Web Empresarial',
+    desc: 'Sitio empresarial para agente de bolsa (ALYC) de Rosario. Web totalmente autoadministrable: el equipo edita textos, imágenes y contenido sin tocar código. Presencia institucional a la altura del rubro financiero.',
+    type: 'web',
+    typeLabel: 'Web Empresarial',
+    emoji: '📈',
+    image: brioLogo,
+    enDesarrollo: true,
+  },
+  {
+    title: 'Camila González — Salón de Belleza',
+    desc: 'Sitio con sistema de turnos y mensajería automática por WhatsApp. Las clientas reservan online y reciben confirmaciones y recordatorios automáticos. La agenda se gestiona sola.',
+    type: 'system',
+    typeLabel: 'Web + Turnos',
+    emoji: '💇‍♀️',
+    image: camiLogo,
+    enDesarrollo: true,
+  },
   {
     title: 'Web + Sistema de Turnos — Kinefit',
     desc: 'Web institucional para centro de kinesiología con sistema de reservas online. Pacientes pueden agendar, cancelar y gestionar turnos.',
@@ -121,22 +142,31 @@ const Projects: React.FC = () => {
       <div className="projects-grid">
         {filtered.map((p, i) => (
           <div key={i} className="project-card">
-            {/* Cuando tengas imágenes reales, reemplazá esto: */}
-            
-            <img src={p.image} alt={p.title} className="project-img" />
+            {p.enDesarrollo ? (
+              <div className="project-logo-wrap">
+                <span className="badge-dev">En desarrollo</span>
+                <img src={p.image} alt={p.title} className="project-logo" />
+              </div>
+            ) : (
+              <img src={p.image} alt={p.title} className="project-img" />
+            )}
 
             <div className="project-body">
               <span className={`project-type type-${p.type}`}>{p.typeLabel}</span>
               <h3 className="project-title">{p.title}</h3>
               <p className="project-desc">{p.desc}</p>
-              <div className="project-links">
-                <a href={p.live} target="_blank" rel="noopener noreferrer" className="project-link link-live">
-                  Ver proyecto
-                </a>
-                <a href={p.code} target="_blank" rel="noopener noreferrer" className="project-link link-code">
-                  Código
-                </a>
-              </div>
+              {p.enDesarrollo ? (
+                <p className="project-soon">Próximamente</p>
+              ) : (
+                <div className="project-links">
+                  <a href={p.live} target="_blank" rel="noopener noreferrer" className="project-link link-live">
+                    Ver proyecto
+                  </a>
+                  <a href={p.code} target="_blank" rel="noopener noreferrer" className="project-link link-code">
+                    Código
+                  </a>
+                </div>
+              )}
             </div>
           </div>
         ))}

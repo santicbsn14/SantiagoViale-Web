@@ -3,6 +3,7 @@ import '../index.css';
 import Navbar from '../Components/Navbar/Navbar';
 import Home from '../Components/Home/Home';
 import Services from '../Components/Services/Services';
+import ComoTrabajo from '../Components/ComoTrabajo/ComoTrabajo';
 import Projects from '../Components/Projects/Projects';
 import AboutMe from '../Components/About-Me/About-me';
 import Contact from '../Components/Contact/Contact';
@@ -14,6 +15,7 @@ function PortfolioPage() {
       <Navbar />
       <Home />
       <Services />
+      <ComoTrabajo />
       <Projects />
       <AboutMe />
       <Contact />

@@ -19,9 +19,9 @@ const Home: React.FC = () => {
           <span className="hero-role">Tu solución web,<br />de punta a punta.</span>
         </h1>
         <p className="hero-desc">
-          Desarrollador Full-Stack especializado en <strong>pymes y negocios locales</strong>.
-          Catálogos, sistemas de turnos, webs institucionales —
-          diseño, desarrollo y deploy: <strong>todo yo, todo junto</strong>.
+          Desarrollador Full-Stack. Llevo proyectos web <strong>completos de forma autónoma</strong> —
+          de la primera reunión al deploy: diseño, desarrollo, base de datos y puesta en producción.
+          Trabajo con <strong>negocios, comercios y equipos</strong> que necesitan soluciones concretas y bien ejecutadas.
         </p>
         <div className="hero-cta">
           <button className="btn btn-filled" onClick={() => scrollTo('proyectos')}>Ver proyectos →</button>
@@ -33,8 +33,8 @@ const Home: React.FC = () => {
             <div className="stat-label">Proyectos entregados</div>
           </div>
           <div>
-            <div className="stat-num">100%</div>
-            <div className="stat-label">Proyectos completos</div>
+            <div className="stat-num">2</div>
+            <div className="stat-label">En desarrollo activo</div>
           </div>
           <div>
             <div className="stat-num">Full</div>
