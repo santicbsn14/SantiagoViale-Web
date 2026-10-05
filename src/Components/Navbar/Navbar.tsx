@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import isotipo from '../../assets/brand/isotipo-mono.svg';
 import './Navbar.css';
 
 const Navbar: React.FC = () => {
@@ -16,6 +17,11 @@ const Navbar: React.FC = () => {
     setMenuOpen(false);
   };
 
+  const handleLink = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    scrollTo(id);
+  };
+
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
@@ -25,21 +31,28 @@ const Navbar: React.FC = () => {
     { label: 'Servicios', id: 'servicios' },
     { label: 'Proyectos', id: 'proyectos' },
     { label: 'Sobre mí', id: 'sobre-mi' },
-    { label: 'Contacto', id: 'contacto' },
+    { label: 'Contacto', id: 'contacto', cta: true },
   ];
 
   return (
     <>
       <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
-        <span className="nav-logo" onClick={() => scrollTo('hero')}>
-          Santiago<span>.</span>
-        </span>
+        <a href="#hero" className="nav-logo" onClick={(e) => handleLink(e, 'hero')}>
+          <img src={isotipo} alt="" className="nav-logo-img" />
+          <span className="nav-logo-text">Viale Sistemas</span>
+        </a>
 
         {/* Desktop links */}
         <ul className="nav-links">
           {links.map((l) => (
             <li key={l.id}>
-              <a onClick={() => scrollTo(l.id)}>{l.label}</a>
+              <a
+                href={`#${l.id}`}
+                className={l.cta ? 'nav-cta' : undefined}
+                onClick={(e) => handleLink(e, l.id)}
+              >
+                {l.label}
+              </a>
             </li>
           ))}
         </ul>
@@ -67,7 +80,7 @@ const Navbar: React.FC = () => {
         <ul className="nav-drawer-links">
           {links.map((l, i) => (
             <li key={l.id} style={{ animationDelay: `${i * 60}ms` }}>
-              <a onClick={() => scrollTo(l.id)}>{l.label}</a>
+              <a href={`#${l.id}`} onClick={(e) => handleLink(e, l.id)}>{l.label}</a>
             </li>
           ))}
         </ul>

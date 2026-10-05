@@ -6,7 +6,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.25rem 3rem;
-  background: rgba(14, 14, 14, 0.85);
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
   transition: padding 0.3s, box-shadow 0.3s;
@@ -17,33 +17,68 @@
 }
 
 .nav-logo {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 1.1rem;
-  letter-spacing: -0.02em;
-  color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
   cursor: pointer;
   z-index: 101;
 }
-.nav-logo span { color: var(--accent); }
+.nav-logo-img {
+  display: block;
+  height: 30px;
+  width: auto;
+}
+.nav-logo-text {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: 0.01em;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+/* ── FOCO TECLADO ── */
+.nav-logo:focus-visible,
+.nav-links a:focus-visible,
+.nav-hamburger:focus-visible,
+.nav-drawer-links a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
 
 /* ── DESKTOP LINKS ── */
 .nav-links {
   list-style: none;
   display: flex;
+  align-items: center;
   gap: 2.5rem;
 }
 .nav-links a {
   color: var(--muted);
   text-decoration: none;
-  font-size: 0.9rem;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
   font-weight: 500;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   cursor: pointer;
   transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--accent); }
+
+.nav-links a.nav-cta {
+  color: var(--accent);
+  border: 1px solid var(--accent-line);
+  padding: 0.5rem 1.1rem;
+  border-radius: 8px;
+  transition: color 0.2s, background 0.2s, border-color 0.2s;
+}
+.nav-links a.nav-cta:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
 
 /* ── HAMBURGER ── */
 .nav-hamburger {
@@ -80,7 +115,7 @@
   position: fixed;
   inset: 0;
   z-index: 98;
-  background: rgba(0,0,0,0.6);
+  background: color-mix(in srgb, var(--bg) 70%, transparent);
   backdrop-filter: blur(2px);
   opacity: 0;
   transition: opacity 0.3s;
@@ -100,7 +135,7 @@
   width: min(320px, 85vw);
   height: 100dvh;
   z-index: 99;
-  background: #111;
+  background: var(--bg2);
   border-left: 1px solid var(--border);
   padding: 6rem 2rem 3rem;
   flex-direction: column;
@@ -158,6 +193,7 @@
 @media (max-width: 768px) {
   .navbar { padding: 1rem 1.5rem; }
   .navbar--scrolled { padding: 0.8rem 1.5rem; }
+  .nav-logo-img { height: 26px; }
   .nav-links { display: none; }
   .nav-hamburger { display: flex; }
   .nav-overlay { display: block; }
