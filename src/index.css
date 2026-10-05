@@ -1,7 +1,3 @@
-html {
-  scroll-behavior: smooth ; /* Desplazamiento suave */
-}
-
 body {
   margin: 0;
   min-width: 320px;
@@ -52,6 +48,9 @@ body {
   --warning-soft: rgba(245, 181, 70, 0.12);
   --warning-line: rgba(245, 181, 70, 0.25);
 
+  /* Layout */
+  --nav-h: 4.5rem;
+
   color-scheme: dark;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -59,6 +58,8 @@ body {
 }
 
 html { scroll-behavior: smooth; }
+
+section[id] { scroll-margin-top: var(--nav-h); }
 
 body {
   background: var(--bg);

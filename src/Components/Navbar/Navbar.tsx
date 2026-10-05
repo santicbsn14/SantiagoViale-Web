@@ -61,7 +61,9 @@ const Navbar: React.FC = () => {
         <button
           className={`nav-hamburger ${menuOpen ? 'nav-hamburger--open' : ''}`}
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Menú"
+          aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
+          aria-expanded={menuOpen}
+          aria-controls="nav-drawer"
         >
           <span />
           <span />
@@ -76,7 +78,7 @@ const Navbar: React.FC = () => {
       />
 
       {/* Mobile drawer */}
-      <div className={`nav-drawer ${menuOpen ? 'nav-drawer--open' : ''}`}>
+      <div id="nav-drawer" className={`nav-drawer ${menuOpen ? 'nav-drawer--open' : ''}`}>
         <ul className="nav-drawer-links">
           {links.map((l, i) => (
             <li key={l.id} style={{ animationDelay: `${i * 60}ms` }}>
