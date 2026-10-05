@@ -1,17 +1,3 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 html {
   scroll-behavior: smooth ; /* Desplazamiento suave */
 }
@@ -21,21 +7,55 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #0e0e0e;
-  --bg2: #161616;
-  --bg3: #1e1e1e;
-  --accent: #61dafb;
-  --accent2: #f7c948;
-  --text: #f0f0f0;
-  --muted: #888;
-  --border: rgba(255,255,255,0.07);
-  --font-display: 'Syne', sans-serif;
-  --font-body: 'DM Sans', sans-serif;
+  /* Fondos — navy de marca oscurecido */
+  --bg: #0c141c;
+  --bg2: #121d28;
+  --bg3: #192735;
+  --surface: #30455b;
+
+  /* Acentos */
+  --accent: #34f4c6;   /* menta — principal */
+  --accent2: #1dcdff;  /* cyan — secundario (reemplaza al amarillo) */
+  --accent3: #21d0b3;  /* teal — hover / estados */
+  --on-accent: #30455b; /* texto sobre fondos menta/cyan */
+
+  /* Degradés de marca */
+  --gradient: linear-gradient(135deg, #1dcdff 0%, #34f4c6 60%, #21d0b3 100%);
+  --gradient-deep: linear-gradient(180deg, #1dcdff 0%, #34f4c6 45%, #30455b 100%);
+
+  /* Texto */
+  --text: #eef3f7;
+  --muted: #8a9bb0;
+
+  /* Bordes */
+  --border: rgba(138, 175, 205, 0.12);
+
+  /* Tipografías */
+  --font-display: 'Chakra Petch', system-ui, sans-serif;
+  --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+
+  /* Tintes de acento */
+  --accent-soft: rgba(52, 244, 198, 0.10);
+  --accent-line: rgba(52, 244, 198, 0.25);
+  --accent2-soft: rgba(29, 205, 255, 0.10);
+  --accent2-line: rgba(29, 205, 255, 0.25);
+
+  /* Bordes */
+  --border-strong: rgba(138, 175, 205, 0.28);
+
+  /* Estados */
+  --danger: #ff6b6b;
+  --warning: #f5b546;
+  --warning-soft: rgba(245, 181, 70, 0.12);
+  --warning-line: rgba(245, 181, 70, 0.25);
+
+  color-scheme: dark;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 html { scroll-behavior: smooth; }
@@ -67,7 +87,7 @@ body {
 .section-title {
   font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.1;
   margin-bottom: 1rem;
@@ -94,9 +114,9 @@ body {
   transition: all 0.2s;
   border: none;
 }
-.btn-filled { background: var(--accent); color: #0e0e0e; }
-.btn-filled:hover { background: #fff; transform: translateY(-2px); }
-.btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: var(--text); }
+.btn-filled { background: var(--accent); color: var(--on-accent); }
+.btn-filled:hover { background: var(--accent3); transform: translateY(-2px); }
+.btn-outline { background: transparent; border: 1px solid var(--border-strong); color: var(--text); }
 .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
 
 @media (max-width: 768px) {
