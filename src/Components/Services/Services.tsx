@@ -1,30 +1,45 @@
 import React from 'react';
 import './Services.css';
+import { ToolIcon, BrowserIcon, CalendarCheckIcon, DashboardIcon } from './ServiceIcons';
 
-const services = [
+type Service = {
+  num: string;
+  icon: React.ReactNode;
+  title: string;
+  desc: string;
+  tag: string;
+  featured?: boolean;
+};
+
+const services: Service[] = [
   {
-    icon: '🗂️',
-    title: 'Catálogo Web',
-    desc: 'Presencia digital rápida para tu negocio. Mostrá tus productos o servicios con una web profesional lista en pocos días.',
-    tag: '⚡ Entrega rápida',
+    num: '01',
+    icon: <ToolIcon />,
+    title: 'Herramientas puntuales',
+    desc: 'Ese proceso que hoy hacés a mano o en una planilla: carteles de precios, registros, cálculos. Una herramienta simple, hecha justo para eso.',
+    tag: 'Arrancá por lo que urge',
   },
   {
-    icon: '📅',
-    title: 'Sistema de Turnos',
-    desc: 'Tu negocio toma turnos 24/7 sin que tengas que contestar mensajes. Tus clientes reservan solos, vos solo aparecés.',
-    tag: '🔁 Automatiza tu agenda',
+    num: '02',
+    icon: <BrowserIcon />,
+    title: 'Webs y catálogos',
+    desc: 'Tu negocio online, con tus productos o servicios y un panel para cargar precios, fotos y novedades sin depender de nadie.',
+    tag: 'Autoadministrable',
   },
   {
-    icon: '🛠️',
-    title: 'Desarrollo a Medida',
-    desc: '¿Necesitás algo más específico? Diseño, backend, base de datos y deploy. Todo el proyecto, de punta a punta.',
-    tag: '🎯 Proyecto completo',
+    num: '03',
+    icon: <CalendarCheckIcon />,
+    title: 'Sistemas de turnos',
+    desc: 'Tus clientes reservan solos, a cualquier hora, y reciben confirmaciones y recordatorios por WhatsApp.',
+    tag: 'Agenda automática',
   },
   {
-    icon: '📊',
-    title: 'Panel de Administración',
-    desc: 'Control total sin conocimientos técnicos. Cargá novedades, productos o precios desde un panel simple e intuitivo.',
-    tag: '🧩 Sin depender de nadie',
+    num: '04',
+    icon: <DashboardIcon />,
+    title: 'Gestión a medida',
+    desc: 'Pedidos, stock, ventas, clientes y pagos en un sistema armado según cómo trabaja tu negocio, no al revés.',
+    tag: 'Hecho a tu medida',
+    featured: true,
   },
 ];
 
@@ -32,11 +47,12 @@ const Services: React.FC = () => {
   return (
     <section id="servicios" className="section services-section">
       <div className="section-label">Lo que ofrezco</div>
-      <h2 className="section-title">Soluciones web para tu negocio</h2>
-      <p className="section-subtitle">Sin agencias, sin intermediarios. Hablo con vos directamente y construyo lo que necesitás.</p>
+      <h2 className="section-title">De una herramienta puntual a un sistema completo</h2>
+      <p className="section-subtitle">Arrancás con lo que más te urge y lo vas ampliando. Sin agencias ni intermediarios: hablás directo con quien lo hace.</p>
       <div className="services-grid">
-        {services.map((s, i) => (
-          <div key={i} className="service-card">
+        {services.map((s) => (
+          <div key={s.num} className={`service-card${s.featured ? ' service-card--featured' : ''}`}>
+            <span className="service-num">{s.num}</span>
             <div className="service-icon">{s.icon}</div>
             <h3>{s.title}</h3>
             <p>{s.desc}</p>
