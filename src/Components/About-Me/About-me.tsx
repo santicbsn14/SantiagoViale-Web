@@ -8,24 +8,24 @@ const AboutMe: React.FC = () => {
   return (
     <section id="sobre-mi" className="section about-section">
       <div className="section-label">Quién soy</div>
-      <h2 className="section-title">Sobre mí</h2>
+      <h2 className="section-title">Detrás de Viale Sistemas</h2>
 
       <div className="about-inner">
         <div className="about-text">
           <p>
-            Soy Santiago Viale, desarrollador Full-Stack de <strong>San Nicolás de los Arroyos</strong>.
-            Me especialicé en construir soluciones web completas para negocios que quieren crecer online
-            sin depender de equipos grandes ni presupuestos enormes.
+            Soy Santiago Viale, desarrollador full stack de <strong>San Nicolás de los Arroyos</strong>.
+            Detrás de Viale Sistemas estoy yo: el que te escucha, el que arma la propuesta y el que
+            escribe el código.
           </p>
           <p>
-            Con la evolución de las herramientas de desarrollo, <strong>puedo cubrir todo el proyecto</strong>:
-            diseño, frontend, backend, base de datos y deploy. Eso significa menos coordinación,
-            más velocidad y un único interlocutor para vos.
+            Hago el proyecto completo, del diseño a la puesta en marcha, así que tenés{' '}
+            <strong>un solo interlocutor de punta a punta</strong>. Sin pasamanos ni equipos que no conocés.
           </p>
           <p>
-            Trabajo principalmente con <strong>pymes y negocios locales</strong>: peluquerías, centros de salud,
-            clubes, agencias. Gente que necesita soluciones concretas, no presupuestos inflados.
+            Trabajo con <strong>pymes y negocios locales</strong> de todo tipo: kinesiología, salones de
+            belleza, peluquerías, gastronomía, distribuidoras, clubes, agencias y hasta un agente de bolsa.
           </p>
+          <p className="stack-label">Con qué trabajo</p>
           <div className="stack-list">
             {stack.map((s) => (
               <span key={s} className="stack-pill">{s}</span>
@@ -34,7 +34,7 @@ const AboutMe: React.FC = () => {
         </div>
 
         <div className="about-visual">
-          <div className="about-img-frame" />
+          <div className="about-img-frame" aria-hidden="true" />
 
           <img src={santiagoViale} alt="Santiago Viale" className="about-img" />
         </div>

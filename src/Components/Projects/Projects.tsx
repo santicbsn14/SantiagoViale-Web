@@ -38,7 +38,7 @@ const projects: Project[] = [
     type: 'system',
     typeLabel: 'Web + Turnos',
     image: camilaGonzalez,
-    live: 'PEGAR_URL_CAMILA',
+    live: 'https://camilagonzalezbelleza.com',
   },
   {
     title: 'Kinefit',
