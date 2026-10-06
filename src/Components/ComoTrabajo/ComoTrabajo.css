@@ -5,43 +5,65 @@
 .como-trabajo-intro {
   color: var(--muted);
   font-size: 1.05rem;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.7;
   max-width: 640px;
   margin-bottom: 3.5rem;
 }
 .como-trabajo-intro strong {
-  color: var(--accent);
+  color: var(--text);
   font-weight: 500;
 }
 
-.como-trabajo-grid {
+/* ── Línea de tiempo (escritorio: horizontal) ── */
+.como-trabajo-timeline {
+  --step-gap: 2rem;
+  --box: 44px;
+  list-style: none;
+  position: relative;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  gap: var(--step-gap);
+}
+
+/* Va del centro de la primera cajita al centro de la última */
+.como-trabajo-timeline::before {
+  content: '';
+  position: absolute;
+  top: calc(var(--box) / 2 - 1px);
+  left: calc(var(--box) / 2);
+  right: calc((100% - 3 * var(--step-gap)) / 4 - var(--box) / 2);
+  height: 2px;
+  background: var(--gradient);
 }
 
 .como-trabajo-step {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 2rem 1.75rem;
+  position: relative;
 }
 
 .como-trabajo-number {
-  display: block;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--box);
+  height: var(--box);
+  border: 1px solid var(--accent-line);
+  border-radius: 8px;
+  background: var(--bg);
   font-family: var(--font-display);
-  font-size: clamp(2.25rem, 4vw, 3rem);
-  font-weight: 800;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
   color: var(--accent);
-  line-height: 1;
-  margin-bottom: 1.25rem;
 }
 
 .como-trabajo-step h3 {
   font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 700;
+  margin-top: 1.25rem;
   margin-bottom: 0.75rem;
 }
 
@@ -49,17 +71,45 @@
   color: var(--muted);
   font-size: 0.9rem;
   line-height: 1.6;
-  font-weight: 300;
+  font-weight: 400;
 }
 
+/* ── Mobile y tablet: vertical ── */
 @media (max-width: 900px) {
-  .como-trabajo-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .como-trabajo-grid {
+  .como-trabajo-timeline {
     grid-template-columns: 1fr;
+  }
+
+  .como-trabajo-timeline::before {
+    top: calc(var(--box) / 2);
+    bottom: 0;
+    left: calc(var(--box) / 2 - 1px);
+    right: auto;
+    width: 2px;
+    height: auto;
+  }
+
+  .como-trabajo-step {
+    display: grid;
+    grid-template-columns: var(--box) 1fr;
+    column-gap: 1.25rem;
+    align-content: start;
+  }
+  .como-trabajo-number {
+    grid-row: 1 / span 2;
+  }
+  .como-trabajo-step h3 {
+    margin-top: 0.5rem;
+  }
+
+  /* Tapa la línea debajo de la última cajita para que termine ahí */
+  .como-trabajo-step:last-child::before {
+    content: '';
+    position: absolute;
+    top: var(--box);
+    bottom: 0;
+    left: 0;
+    width: var(--box);
+    background: var(--bg);
   }
 }
