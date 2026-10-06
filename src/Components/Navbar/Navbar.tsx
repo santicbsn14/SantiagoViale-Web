@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import isotipo from '../../assets/brand/isotipo-mono.svg';
 import './Navbar.css';
 
 const Navbar: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
+  const drawerRef = useRef<HTMLDivElement>(null);
+  // Si el cierre fue con un link, no se devuelve el foco al hamburguesa (la página navega)
+  const restoreFocus = useRef(true);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -12,9 +16,14 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const closeMenu = (focusHamburger: boolean) => {
+    restoreFocus.current = focusHamburger;
+    setMenuOpen(false);
+  };
+
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    setMenuOpen(false);
+    closeMenu(false);
   };
 
   const handleLink = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
@@ -25,6 +34,42 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
+
+  // Foco: al abrir pasa al primer link del drawer; al cerrar vuelve al hamburguesa
+  const wasOpen = useRef(false);
+  useEffect(() => {
+    if (menuOpen) {
+      drawerRef.current?.querySelector<HTMLAnchorElement>('a')?.focus();
+    } else if (wasOpen.current && restoreFocus.current) {
+      hamburgerRef.current?.focus();
+    }
+    wasOpen.current = menuOpen;
+    restoreFocus.current = true;
+  }, [menuOpen]);
+
+  // Escape cierra; Tab y Shift+Tab circulan entre el hamburguesa y los links del drawer
+  useEffect(() => {
+    if (!menuOpen) return;
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeMenu(true);
+        return;
+      }
+      if (e.key !== 'Tab' || !hamburgerRef.current || !drawerRef.current) return;
+      const focusables: HTMLElement[] = [
+        hamburgerRef.current,
+        ...Array.from(drawerRef.current.querySelectorAll<HTMLAnchorElement>('a')),
+      ];
+      const index = focusables.indexOf(document.activeElement as HTMLElement);
+      const next = e.shiftKey
+        ? (index <= 0 ? focusables.length - 1 : index - 1)
+        : (index === -1 || index === focusables.length - 1 ? 0 : index + 1);
+      e.preventDefault();
+      focusables[next].focus();
+    };
+    document.addEventListener('keydown', handleKey);
+    return () => document.removeEventListener('keydown', handleKey);
   }, [menuOpen]);
 
   const links = [
@@ -60,7 +105,8 @@ const Navbar: React.FC = () => {
         {/* Hamburger */}
         <button
           className={`nav-hamburger ${menuOpen ? 'nav-hamburger--open' : ''}`}
-          onClick={() => setMenuOpen(!menuOpen)}
+          ref={hamburgerRef}
+          onClick={() => (menuOpen ? closeMenu(true) : setMenuOpen(true))}
           aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
           aria-expanded={menuOpen}
           aria-controls="nav-drawer"
@@ -74,11 +120,11 @@ const Navbar: React.FC = () => {
       {/* Overlay */}
       <div
         className={`nav-overlay ${menuOpen ? 'nav-overlay--visible' : ''}`}
-        onClick={() => setMenuOpen(false)}
+        onClick={() => closeMenu(true)}
       />
 
       {/* Mobile drawer */}
-      <div id="nav-drawer" className={`nav-drawer ${menuOpen ? 'nav-drawer--open' : ''}`}>
+      <div id="nav-drawer" ref={drawerRef} className={`nav-drawer ${menuOpen ? 'nav-drawer--open' : ''}`}>
         <ul className="nav-drawer-links">
           {links.map((l, i) => (
             <li key={l.id} style={{ animationDelay: `${i * 60}ms` }}>
