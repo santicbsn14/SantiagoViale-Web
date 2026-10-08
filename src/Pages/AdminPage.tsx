@@ -1,7 +1,9 @@
-import { useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { useCallback, useState } from 'react';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import AdminDashboard from '../Components/AdminDashboard/AdminDashboard';
+import AdminHeader from '../Components/AdminHeader/AdminHeader';
 import AdminProyectoDetalle from '../Components/AdminProyectoDetalle/AdminProyectoDetalle';
+import isotipo from '../assets/brand/isotipo-mono.svg';
 import './AdminPage.css';
 
 const AUTH_STORAGE_KEY = 'admin_auth';
@@ -11,17 +13,21 @@ interface LoginResponse {
 }
 
 function AdminPage() {
+  const navigate = useNavigate();
   const [authenticated, setAuthenticated] = useState(
     () => sessionStorage.getItem(AUTH_STORAGE_KEY) === 'true',
   );
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [loggingOut, setLoggingOut] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const handleSessionExpired = () => {
+  // Memoized: the dashboard/detalle use it as an effect dependency, so a new
+  // reference on every render (e.g. when loggingOut changes) would refetch.
+  const handleSessionExpired = useCallback(() => {
     sessionStorage.removeItem(AUTH_STORAGE_KEY);
     setAuthenticated(false);
-  };
+  }, []);
 
   const handleLogin = async () => {
     if (loading) return;
@@ -52,24 +58,53 @@ function AdminPage() {
     }
   };
 
+  const handleLogout = async () => {
+    if (loggingOut) return;
+
+    setLoggingOut(true);
+
+    try {
+      await fetch('/api/logout', { method: 'POST', credentials: 'same-origin' });
+    } catch {
+      // Even if the request fails, the client-side session is closed below.
+    } finally {
+      sessionStorage.removeItem(AUTH_STORAGE_KEY);
+      setPassword('');
+      setAuthenticated(false);
+      setLoggingOut(false);
+      navigate('/admin');
+    }
+  };
+
   if (authenticated) {
     return (
-      <Routes>
-        <Route index element={<AdminDashboard onUnauthorized={handleSessionExpired} />} />
-        <Route
-          path="proyecto/:id"
-          element={<AdminProyectoDetalle onUnauthorized={handleSessionExpired} />}
-        />
-      </Routes>
+      <>
+        <AdminHeader onLogout={handleLogout} loggingOut={loggingOut} />
+        <Routes>
+          <Route index element={<AdminDashboard onUnauthorized={handleSessionExpired} />} />
+          <Route
+            path="proyecto/:id"
+            element={<AdminProyectoDetalle onUnauthorized={handleSessionExpired} />}
+          />
+        </Routes>
+      </>
     );
   }
 
   return (
     <div className="admin-login">
       <div className="admin-login__card">
+        <div className="admin-login__marca">
+          <img src={isotipo} alt="" className="admin-login__isotipo" />
+          <span className="admin-login__nombre">Viale Sistemas</span>
+        </div>
         <div className="section-label">Acceso restringido</div>
         <h1 className="section-title">Panel admin</h1>
+        <label htmlFor="admin-password" className="visually-hidden">
+          Contraseña
+        </label>
         <input
+          id="admin-password"
           type="password"
           className="admin-login__input"
           value={password}

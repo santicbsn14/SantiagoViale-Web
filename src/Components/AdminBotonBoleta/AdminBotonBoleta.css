@@ -14,5 +14,5 @@
 .admin-boton-boleta__error {
   font-family: var(--font-body);
   font-size: 0.75rem;
-  color: var(--accent2);
+  color: var(--danger);
 }

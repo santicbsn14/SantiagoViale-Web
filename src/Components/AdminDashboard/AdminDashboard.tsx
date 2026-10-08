@@ -64,6 +64,7 @@ function AdminDashboard({ onUnauthorized }: AdminDashboardProps) {
           <div className="admin-dashboard__totales">
             <AdminTotalCard
               label="Total por cobrar"
+              destacado
               value={formatARS(proyectos.reduce((acc, p) => acc + p.saldo, 0))}
             />
             <AdminTotalCard

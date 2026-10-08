@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type CSSProperties } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import AdminEstadoBadge from '../AdminEstadoBadge/AdminEstadoBadge';
 import AdminBotonBoleta from '../AdminBotonBoleta/AdminBotonBoleta';
@@ -102,6 +102,10 @@ function AdminProyectoDetalle({ onUnauthorized }: AdminProyectoDetalleProps) {
     );
   }
 
+  const presupuesto = proyecto.presupuesto ?? 0;
+  const progreso =
+    presupuesto > 0 ? Math.min(100, Math.max(0, (proyecto.pagado / presupuesto) * 100)) : null;
+
   return (
     <div className="admin-detalle">
       <Link to="/admin" className="admin-detalle__volver">
@@ -155,6 +159,22 @@ function AdminProyectoDetalle({ onUnauthorized }: AdminProyectoDetalleProps) {
           <span className="admin-detalle__valor">{formatFecha(proyecto.fechaInicio)}</span>
         </div>
       </div>
+
+      {progreso !== null && (
+        <div className="admin-detalle__cobro">
+          <p className="admin-detalle__cobro-texto">
+            <span className="admin-detalle__cobro-porcentaje">{Math.floor(progreso)}%</span> cobrado
+          </p>
+          <div
+            className={`admin-detalle__progreso ${
+              progreso === 100 ? 'admin-detalle__progreso--completo' : ''
+            }`}
+            aria-hidden="true"
+          >
+            <span style={{ '--progreso': `${progreso}%` } as CSSProperties} />
+          </div>
+        </div>
+      )}
 
       <div className="admin-detalle__pagos">
         <h2 className="admin-detalle__pagos-title">Pagos</h2>

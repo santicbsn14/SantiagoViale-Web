@@ -52,6 +52,21 @@ export function buildSessionCookieHeader(value: string): string {
   return parts.join('; ');
 }
 
+/**
+ * Builds the `Set-Cookie` header value that clears the session cookie
+ * (empty value + Max-Age=0). Same attributes and `Secure` criterion as
+ * buildSessionCookieHeader, so the browser matches and drops the cookie.
+ */
+export function buildClearSessionCookieHeader(): string {
+  const parts = [`${SESSION_COOKIE_NAME}=`, 'HttpOnly', 'Path=/', 'SameSite=Lax', 'Max-Age=0'];
+
+  if (process.env.NODE_ENV === 'production') {
+    parts.push('Secure');
+  }
+
+  return parts.join('; ');
+}
+
 function parseCookieHeader(header: string | undefined): Record<string, string> {
   const cookies: Record<string, string> = {};
   if (!header) return cookies;
